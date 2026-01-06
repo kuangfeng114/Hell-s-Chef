@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5d08fdccad643d3408c53ed099e17781, type: 3}
+      propertyPath: m_TagString
+      value: SheerHeart
+      objectReference: {fileID: 0}
     - target: {fileID: 3228100263842829145, guid: 5d08fdccad643d3408c53ed099e17781, type: 3}
       propertyPath: m_Layer
       value: 6

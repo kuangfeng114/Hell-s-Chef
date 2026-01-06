@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 76465c68bd31943449cfea8213e04b14, type: 3}
+      propertyPath: m_TagString
+      value: RedMeat
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -82,6 +86,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 76465c68bd31943449cfea8213e04b14, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1072847333370608393}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 76465c68bd31943449cfea8213e04b14, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3952395533554031813}
   m_SourcePrefab: {fileID: 100100000, guid: 76465c68bd31943449cfea8213e04b14, type: 3}
 --- !u!1 &7055819131420078245 stripped
 GameObject:
@@ -137,3 +144,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3952395533554031813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7055819131420078245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9112b37f755dc4899fa942c8280c9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MC: {fileID: 0}
+  CP: {fileID: 0}

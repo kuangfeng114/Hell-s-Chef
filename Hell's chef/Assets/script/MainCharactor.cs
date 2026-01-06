@@ -14,12 +14,13 @@ public class SimpleMove : MonoBehaviour
 
     [Header("食物箱")]
     public LayerMask DetectFoodBoxMask;
-    private bool FromFoodBox = false;
+    public bool FromFoodBox = false;
 
     [Header("人物和视角移动")]
     public float movespeed = 2f;
     public float runspeed = 5f;
     public float turnspeed = 1f;
+    public float GroundDrag = -2f;
     Vector3 moveset;
 
     [Header("捡拾食物")]
@@ -30,14 +31,18 @@ public class SimpleMove : MonoBehaviour
 
     [Header("扔出食物")]
     public float throwstrength = 250f;
-    bool isholding = false;
+    public bool isholding = false;
     private Rigidbody itemrb;
     private Transform itemtf;
+    private GameObject itemoj;
+    private float throwspeed = 2f;
 
     [Header("食物靠近墙壁")]
     public float detectr = 0.3f;
 
-    private float throwspeed = 2f;
+    [Header("识别菜板")]
+    public  CookingPlate targetzone;
+
 
     void Start()
     {
@@ -59,7 +64,7 @@ public class SimpleMove : MonoBehaviour
     {
         DetectFood();
     }
-
+    //视角变换
     void visionturn()
     {
         float x = Input.GetAxis("Mouse X");
@@ -75,7 +80,7 @@ public class SimpleMove : MonoBehaviour
 
         MainCamera.transform.Rotate(Vector3.right , -y * turnspeed);
     }
-
+    //移动代码
     void move()
     {
         float hor = Input.GetAxis("Horizontal");
@@ -93,11 +98,12 @@ public class SimpleMove : MonoBehaviour
 
         float speed = Input.GetKey(KeyCode.LeftShift) ? runspeed : movespeed;
         moveset *= speed;
+        moveset += transform.up * GroundDrag;
 
         Changethrowspeed(vct,hor);
 
     }
-
+    //投掷速度随移动速度改变
     void Changethrowspeed(float vct, float hor)
     {
         if (hor == 0 && vct == 0)
@@ -109,12 +115,12 @@ public class SimpleMove : MonoBehaviour
             throwspeed = Input.GetKey(KeyCode.LeftShift) ? runspeed / 2.5f : movespeed / 1.5f;
         }
     }
-
+    //应用移动
     void applymove()
     {
         rb.MovePosition(transform.position + moveset * Time.fixedDeltaTime);
     }
-
+    //处理食物的代码
     void DetectFood()
     {
         if (isholding)
@@ -126,7 +132,7 @@ public class SimpleMove : MonoBehaviour
             DetectingObject();
         }
     }
-
+    //区分是食物或是食物箱
     void DetectingObject()
     {
 
@@ -136,6 +142,7 @@ public class SimpleMove : MonoBehaviour
         {
             itemrb = hitInfo.rigidbody;
             itemtf = hitInfo.transform;
+            itemoj = hitInfo.collider.gameObject;
             DealWithItem(); 
         }
         
@@ -145,7 +152,7 @@ public class SimpleMove : MonoBehaviour
         }
 
     }
-
+    //处理食物箱
     void DealWithItemFromFoodBox()
     {
         RaycastHit hitInfo;
@@ -154,13 +161,14 @@ public class SimpleMove : MonoBehaviour
             FromFoodBox = true;
             if (Physics.SphereCast(MainCamera.transform.position, detectR, MainCamera.transform.forward, out hitInfo, pickupdis, DetectFoodMask.value))
             {
+                itemoj = hitInfo.collider.gameObject;
                 itemrb = hitInfo.rigidbody;
                 itemtf = hitInfo.transform;
                 DealWithItem();
             }
         }
     }
-
+    //拿起食物，设置父级
     void DealWithItem()
     {
         if (Input.GetMouseButtonDown(0) || FromFoodBox)
@@ -178,7 +186,7 @@ public class SimpleMove : MonoBehaviour
 
         }
     }
-
+    //测墙距离返回float
     float DetectingWall()
     {
         float dis = holddis;
@@ -191,7 +199,7 @@ public class SimpleMove : MonoBehaviour
 
         return dis;
     }
-
+    //投掷以及放下
     void DealWithHolding()
     {
 
@@ -216,6 +224,12 @@ public class SimpleMove : MonoBehaviour
             isholding = false;
             itemrb.isKinematic = false;
             itemtf.SetParent(null);
+        }else if (targetzone.InThePlace){
+            isholding = false;
+  //          itemrb.isKinematic = false;
+  //          itemtf.SetParent(null);
+            Destroy(itemoj);
+            targetzone.InThePlace = false;
         }
     }
 }
