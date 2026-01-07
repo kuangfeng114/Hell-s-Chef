@@ -33,7 +33,7 @@ public class FoodBox : MonoBehaviour
     {
         GameObject newfood = Instantiate(RedMeat, maincamera.transform.position + maincamera.transform.forward * ProduceDis, Quaternion.identity);
         Food food = newfood.GetComponent<Food>();
-        //调用food脚本中的InitializeFood方法
-        food.InitializeFood(MC, CP);
+            //调用food脚本中的InitializeFood方法
+        food.InitializeFood(MC, CP);  
     }
 }

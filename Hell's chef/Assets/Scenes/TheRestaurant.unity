@@ -357,6 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InThePlace: 0
   FlyForce: 15
+  MC: {fileID: 1096633604}
   Redmeat: {fileID: 5707851979331940132, guid: 4fd19cfd4bd65ea419a40b5b4bcb7ef9, type: 3}
   RedmeatPlace: {fileID: 740630336}
 --- !u!1 &98330649 stripped

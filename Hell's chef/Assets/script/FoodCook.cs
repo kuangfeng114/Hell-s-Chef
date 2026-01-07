@@ -25,12 +25,6 @@ public class Food : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CP.InThePlace)
-        {
-            MC.isholding = false;
-            CP.InThePlace = false;
-            Destroy(gameObject);
-        }
-        
+      
     }
 }

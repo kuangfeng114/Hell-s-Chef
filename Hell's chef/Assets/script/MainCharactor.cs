@@ -226,8 +226,6 @@ public class SimpleMove : MonoBehaviour
             itemtf.SetParent(null);
         }else if (targetzone.InThePlace){
             isholding = false;
-  //          itemrb.isKinematic = false;
-  //          itemtf.SetParent(null);
             Destroy(itemoj);
             targetzone.InThePlace = false;
         }

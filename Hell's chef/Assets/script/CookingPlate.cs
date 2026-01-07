@@ -11,6 +11,8 @@ public class CookingPlate : MonoBehaviour
     private GameObject Newfood;
     public float FlyForce = 10f;
 
+    [Header("MainCharacter引入")]
+    public SimpleMove MC;
 
     [Header("食物（pieces）引入")]
     public GameObject Redmeat;
@@ -21,10 +23,14 @@ public class CookingPlate : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.tag == "RedMeat" && iscooking == false)
         {
-            DealWithFood(4, Redmeat, RedmeatPlace);
-        }  
+            DealWithFood(3, Redmeat, RedmeatPlace);
+            ClearEnteredFood(other.gameObject);
+        }
+
+
     }
 
     private void OnMouseDown()
@@ -55,8 +61,12 @@ public class CookingPlate : MonoBehaviour
         LetFoodJump(rb);
 
         cnt++;
-        if(cnt == cutnum)
+        if(cnt == cutnum+1)
         {
+            for(int i  = 0; i <= cutnum; i++)
+            {
+                Destroy(foodpieces.transform.GetChild(i).gameObject);
+            }
             print("intopot");
             cnt = 0;
             iscooking = false;
@@ -70,17 +80,25 @@ public class CookingPlate : MonoBehaviour
 
         Newfood = Instantiate(food, place.transform.position, Quaternion.identity);
         cutnum = num;
+
     }
 
     void LetFoodJump(Rigidbody piece)
     {
         piece.isKinematic = false;
         Vector3 randomForce = new Vector3(
-            Random.Range(-2f, 2f),
+            Random.Range(-3f, 3f),
             Random.Range(5f, 8f),
             Random.Range(-2f, 2f)
         );
         piece.AddForce(randomForce * FlyForce);
-        print("Flying");
+    }
+
+    void ClearEnteredFood(GameObject food)
+    {
+        if (!MC.isholding)
+        {
+            Destroy(food);
+        }
     }
 }
