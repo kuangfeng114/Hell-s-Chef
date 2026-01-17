@@ -20,6 +20,11 @@ public class CookingPlate : MonoBehaviour
     [Header("食物生成位置引入")]
     public GameObject RedmeatPlace;
 
+    [Header("食物入锅位置")]
+    public GameObject IntoPotPlace;
+
+
+
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
