@@ -356,11 +356,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InThePlace: 0
+  TimeForCook: 0.5
   FlyForce: 15
   MC: {fileID: 1096633604}
   Redmeat: {fileID: 5707851979331940132, guid: 4fd19cfd4bd65ea419a40b5b4bcb7ef9, type: 3}
   RedmeatPlace: {fileID: 740630336}
-  IntoPotPlace: {fileID: 0}
+  IntoPotPlace: {fileID: 1608296699}
+  DT: 0.5
 --- !u!1 &90815668
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,7 +414,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.62, y: 6.85, z: 5.38}
+  m_Size: {x: 0.5, y: 12.61, z: 3.86}
   m_Center: {x: 0, y: -0.39, z: 0}
 --- !u!1 &98330649 stripped
 GameObject:
@@ -1300,6 +1302,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliderScale: 3.5
+--- !u!65 &937425899
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937425892}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.66, y: 4.33, z: 4.41}
+  m_Center: {x: 0.63, y: -2, z: 0.009254034}
 --- !u!1001 &1048829014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1366,7 +1389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8658422279658554519, guid: cdeda3cd86561b64ab9e5594989bd03b, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cdeda3cd86561b64ab9e5594989bd03b, type: 3}
       propertyPath: m_Name
@@ -1400,6 +1423,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8658422279658554519, guid: cdeda3cd86561b64ab9e5594989bd03b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 937425896}
+    - targetCorrespondingSourceObject: {fileID: -8658422279658554519, guid: cdeda3cd86561b64ab9e5594989bd03b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 937425899}
   m_SourcePrefab: {fileID: 100100000, guid: cdeda3cd86561b64ab9e5594989bd03b, type: 3}
 --- !u!1001 &1067886501
 PrefabInstance:
@@ -1832,7 +1858,7 @@ MonoBehaviour:
     m_Bits: 64
   DetectWallMask:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 7040
   pickupdis: 4
   holddis: 2
   throwstrength: 250
@@ -2003,7 +2029,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 5444daaee94116e498224d60ac8f8e04, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -2342,7 +2368,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.62, y: 6.85, z: 5.38}
+  m_Size: {x: 0.42, y: 18.58, z: 4.47}
   m_Center: {x: 0, y: -0.39, z: 0}
 --- !u!1001 &1484934948
 PrefabInstance:
@@ -3187,7 +3213,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.62, y: 6.85, z: 5.38}
+  m_Size: {x: 0.5, y: 16.94, z: 4.36}
   m_Center: {x: 0, y: -0.39, z: 0}
 --- !u!1 &1844263330 stripped
 GameObject:
@@ -3294,7 +3320,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.62, y: 6.85, z: 5.38}
+  m_Size: {x: 0.5, y: 16.51, z: 3.58}
   m_Center: {x: 0, y: -0.39, z: 0}
 --- !u!1 &1943547106 stripped
 GameObject:
